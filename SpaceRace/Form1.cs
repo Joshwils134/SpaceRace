@@ -186,7 +186,8 @@ namespace SpaceRace
                 pointNoise.Play();
                 player1.X = 120;
                 player1.Y = 300;
-                p1ScoreLabel.Text = $"{player1Score++}";
+                player1Score++;
+                p1ScoreLabel.Text = $"{player1Score}";
             }
 
             for (int i = 0; i < leftLine.Count(); i++)
@@ -216,16 +217,17 @@ namespace SpaceRace
                 pointNoise.Play();
                 player2.X = 420;
                 player2.Y = 300;
-                p2ScoreLabel.Text = $"{player2Score++}";
+                player2Score++;
+                p2ScoreLabel.Text = $"{player2Score}";
             }
 
-            if (player1Score == 4)
+            if (player1Score == 3)
             {
                 gameTimer.Enabled = false;
                 gameState = "Player1Win";
             }
 
-            if (player2Score == 4)
+            if (player2Score == 3)
             {
                 gameTimer.Enabled = false;
                 gameState = "Player2Win";
@@ -234,6 +236,14 @@ namespace SpaceRace
         }
         public void GameInitialize()
         {
+            player1.X = 120;
+            player1.Y = 300;
+            player2.X = 420;
+            player2.Y = 300;
+            player1Score = 0;
+            player2Score = 0;
+            p1ScoreLabel.Text = "0";
+            p2ScoreLabel.Text = "0";
             titleLabel.Visible = false;
             subTitleLabel.Visible = false;
             gameTimer.Enabled = true;
